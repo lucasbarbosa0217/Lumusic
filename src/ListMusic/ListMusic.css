@@ -1,0 +1,42 @@
+.music-select{
+    display: block;
+    width: 100%;
+    border: none;
+    margin: 0;
+
+}
+
+.music-container{
+    background-color: var(--background-container);
+    height: 65px;
+    border-bottom: 1px solid var(--background-hover);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 16px;
+    cursor: pointer;
+    user-select: auto   ;
+    text-align: start;
+}
+
+.music-container:hover{
+    background-color: var(--background-hover);
+}
+
+
+  
+  
+
+.music-container__image{
+    width: 50px;
+    height: 50px;
+    
+   
+    margin-right: 16px;
+}
+
+.album-cover{
+    width: 100%;
+    border-radius: 10px;
+}
+
