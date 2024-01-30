@@ -4,7 +4,7 @@ import './Player-Test.css';
 import Music_Title from '../Music-Title/Music-Title';
 
 const MusicPlayer = ({ song }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
 
@@ -62,7 +62,7 @@ const MusicPlayer = ({ song }) => {
       <ReactAudioPlayer
         src={"https://"+song.songLink}
         ref={audioRef}
-        autoPlay={false}
+        autoPlay={true}
         controls={false}
       />
       <div className="player-controls">
