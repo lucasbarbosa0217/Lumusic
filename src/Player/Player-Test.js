@@ -76,6 +76,15 @@ const MusicPlayer = () => {
     }
   };
 
+  const doublePrevious = () => {
+
+    if (musicaIndex === 0) {
+      tocarMusica(musicas.length - 1);
+    } else {
+      tocarMusica(musicaIndex - 1);
+    }
+  };
+
   const next = () => {
     if (musicas.length - 1 === musicaIndex) {
       tocarMusica(0);
@@ -96,7 +105,7 @@ const MusicPlayer = () => {
         <Music_Title song={musicaTocando}></Music_Title>
         <div>
           <button className='play-pause'>
-            <SkipBack onClick={previous} size={32} color={`#fcafad`} />
+            <SkipBack onClick={previous} onDoubleClick={doublePrevious} size={32} color={`#fcafad`} />
           </button>
           <button className='play-pause'>
             <SkipForward onClick={next} size={32} color={`#fcafad`} />
