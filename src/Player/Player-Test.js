@@ -1,42 +1,51 @@
 import React, { useState, useRef, useEffect } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
 import './Player-Test.css';
 import Music_Title from '../Music-Title/Music-Title';
+import { useMusic } from '../Context/MusicContext';
+import { Pause, Play, SkipBack, SkipForward } from '@phosphor-icons/react';
 
-const MusicPlayer = ({ song }) => {
+const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
+  const seeker = useRef(null);
+  const [max, setMax] = useState(0);
+  const { musicas, musicaTocando, musicaIndex, tocarMusica } = useMusic();
 
   useEffect(() => {
+    const audioElement = audioRef.current;
+
     const handleTimeUpdate = () => {
-      setCurrentTime(audioRef.current?.audioEl.current?.currentTime || 0);
+      setCurrentTime(audioElement.currentTime);
+      if (!isNaN(audioElement.duration)) {
+        setMax(audioElement.duration);
+      }
     };
-  
-    const audioElement = audioRef.current?.audioEl.current;
-  
+
+    const handleEnded = () => {
+      next();
+    };
+
     if (audioElement) {
       audioElement.addEventListener('timeupdate', handleTimeUpdate);
+      audioElement.addEventListener('ended', handleEnded);
     }
-    
+
     return () => {
       if (audioElement) {
         audioElement.removeEventListener('timeupdate', handleTimeUpdate);
+        audioElement.removeEventListener('ended', handleEnded);
       }
     };
-    
-  }, []);
-  
+  }, [musicaTocando, musicaIndex]);
 
   const handlePlayPause = () => {
-    const audio = audioRef.current.audioEl.current;
-
+    const audio = audioRef.current;
     if (isPlaying) {
       audio.pause();
     } else {
       audio.play();
     }
-
     setIsPlaying(!isPlaying);
   };
 
@@ -48,43 +57,69 @@ const MusicPlayer = ({ song }) => {
 
   const handleSeek = (e) => {
     const seekTime = e.target.value;
-    const audio = audioRef.current.audioEl.current;
-
+    const audio = audioRef.current;
     if (audio) {
       audio.currentTime = seekTime;
       setCurrentTime(seekTime);
     }
   };
 
+  const previous = () => {
+    if (currentTime < 5) {
+      audioRef.current.currentTime = 0;
+      return;
+    }
+    if (musicaIndex === 0) {
+      tocarMusica(musicas.length - 1);
+    } else {
+      tocarMusica(musicaIndex - 1);
+    }
+  };
+
+  const next = () => {
+    if (musicas.length - 1 === musicaIndex) {
+      tocarMusica(0);
+    } else {
+      tocarMusica(musicaIndex + 1);
+    }
+  };
+
   return (
     <div className="music-player">
-     
-      <ReactAudioPlayer
-        src={"https://"+song.songLink}
+      <audio
+        src={`https://${musicaTocando.songLink}`}
         ref={audioRef}
-        autoPlay={true}
+        autoPlay
         controls={false}
       />
       <div className="player-controls">
-        <Music_Title song={song}></Music_Title>
-        <button onClick={handlePlayPause} className='play-pause'>
-          {isPlaying ? (
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/fcafad/pause--v1.png" alt="pause--v1" />
-          ) : (
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/fcafad/play--v1.png" alt="play--v1" />
-          )}
-        </button>
+        <Music_Title song={musicaTocando}></Music_Title>
+        <div>
+          <button className='play-pause'>
+            <SkipBack onClick={previous} size={32} color={`#fcafad`} />
+          </button>
+          <button className='play-pause'>
+            <SkipForward onClick={next} size={32} color={`#fcafad`} />
+          </button>
+          <button onClick={handlePlayPause} className='play-pause'>
+            {isPlaying ? (
+              <Pause size={32} color={`#fcafad`} />
+            ) : (
+              <Play size={32} color={`#fcafad`} />
+            )}
+          </button>
+        </div>
       </div>
       <div className="progress-bar-container">
         <input
           type="range"
           value={currentTime}
-          max={audioRef.current ? audioRef.current.audioEl.current.duration : 0}
+          max={max}
           onChange={handleSeek}
+          ref={seeker}
         />
         <div className="current-time">{formatTime(currentTime)}</div>
       </div>
-      {/* Adicione o nome da música, do artista, do álbum e a foto da capa do álbum aqui */}
     </div>
   );
 };

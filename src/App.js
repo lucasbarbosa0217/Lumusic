@@ -1,37 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './App.css';
 import ListMusic from './ListMusic/ListMusic';
 import Menu from './Menu/Menu';
 import Player_Test from './Player/Player-Test';
 import Playlist from './Playlist/Playlist';
 import songList from "./artist.json"
+import { MusicProvider, useMusic } from './Context/MusicContext';
+
 function App() {
   const [songs, setSongs] = useState([]);
-  const [selectedSong, setSelectedSong] = useState(null);
-  const [isPlayerVisible, setIsPlayerVisible] = useState(false);
   const [playerKey, setPlayerKey] = useState(0);
+  const { musicas, musicaTocando, musicaIndex, tocarMusica, pararMusica, setCurrentIndex, } = useMusic();
+
+ 
 
   useEffect(() => {
-    setSongs(songList.songs)
-    //fetch('http://localhost:4200/songs')
-      //.then(response => response.json())
-      //.then(data => {
-       // console.log(data)
-        //setSongs(data);
-      //})
-      //.catch(error => console.error('Erro ao buscar os dados:', error));
+    setSongs(musicas)
   }, []);
 
-  const handleSongClick = (song) => {
-    setSelectedSong(song);
-    setIsPlayerVisible(true);
-    setPlayerKey(prevKey => prevKey + 1);
+  const handleSongClick = (index) => {
+    tocarMusica(index)
   };
 
-  const handlePlayerClose = () => {
-    setIsPlayerVisible(false);
-    setSelectedSong(null);
-  };
+
+
 
   return (
     <>
@@ -40,12 +32,14 @@ function App() {
           <Playlist></Playlist>
 
           {songs.map((song, index) => (
-            <ListMusic key={index} song={song.song} onClick={() => handleSongClick(song.song)} />
+            <ListMusic key={index} song={song.song} onClick={() => handleSongClick(index)} />
           ))}
         </div>
         <div className='bottom'>
-          {/* Renderizar Player_Test apenas se uma música for selecionada */}
-          {isPlayerVisible && <Player_Test key={playerKey} song={selectedSong} onClose={handlePlayerClose} />}
+        
+
+
+          {musicaTocando && <Player_Test />}
           <Menu></Menu>
         </div>
       </div>
