@@ -10,7 +10,7 @@ const MusicPlayer = () => {
   const audioRef = useRef(null);
   const seeker = useRef(null);
   const [max, setMax] = useState(0);
-  const { musicas, musicaTocando, musicaIndex, tocarMusica } = useMusic();
+  const { musicas, setMusicas, musicaTocando, musicaIndex, tocarMusica } = useMusic();
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -65,7 +65,7 @@ const MusicPlayer = () => {
   };
 
   const previous = () => {
-    if (currentTime < 5) {
+    if (currentTime > 5) {
       audioRef.current.currentTime = 0;
       return;
     }
@@ -77,7 +77,6 @@ const MusicPlayer = () => {
   };
 
   const doublePrevious = () => {
-
     if (musicaIndex === 0) {
       tocarMusica(musicas.length - 1);
     } else {

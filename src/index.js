@@ -7,7 +7,7 @@ import { MusicProvider } from './Context/MusicContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <MusicProvider>  <App /></MusicProvider>
+    <MusicProvider> <App /></MusicProvider>
   
  
 );

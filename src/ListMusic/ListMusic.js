@@ -3,17 +3,20 @@ import React from 'react';
 import "../Vars.css";
 import "./ListMusic.css";
 import Music_Title from '../Music-Title/Music-Title';
+import { Hamburger, Queue } from '@phosphor-icons/react';
 
-const ListMusic = ({ song, onClick }) => {
+const ListMusic = ({ song, onClick, onMenu }) => {
   return (
-    <button className='music-select' onClick={onClick}>
-      <div className="music-container">
+      <div className="music-select">
+      <button className='music-container' onClick={onClick}>
         <Music_Title song={song}></Music_Title>
-        <div className="play-button">
-          <img width="30" height="30" src="https://img.icons8.com/ios/50/fcafad/like--v1.png" alt="like--v1" />
-        </div>
+      </button>
+
+        <button className="play-button queue">
+          <Queue width={40} height={40} color="#fcafad" weight='fill' onClick={onMenu}></Queue>
+        </button>
       </div>
-    </button>
+
   );
 };
 
