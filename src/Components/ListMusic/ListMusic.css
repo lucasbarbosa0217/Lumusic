@@ -37,9 +37,7 @@
 
 }
 
-.queue:hover{
-    background-color: #f8e9e8
-}
+
 .music-select:hover{
     background-color: var(--background-hover);
 }
