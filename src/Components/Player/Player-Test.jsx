@@ -19,6 +19,27 @@ const MusicPlayer = () => {
 
   const [scroll, setScroll] = useState(false)
 
+  useEffect(() => {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: musicaTocando.name,
+        artist: musicaTocando.artistName,
+        album: musicaTocando.albumName,
+        artwork: [
+          { src: `${musicaTocando.albumCover}`, sizes: '512x512', type: 'image/png' }
+        ]
+      });}
+  }, [musicaTocando])
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+      previous()
+    });
+
+    navigator.mediaSession.setActionHandler('nexttrack', () => {
+      next()
+    });
+  }
+
 
   useEffect(() => {
     const audioElement = audioRef.current;
