@@ -28,8 +28,15 @@ const MusicPlayer = () => {
         artwork: [
           { src: `${musicaTocando.albumCover}`, sizes: '512x512', type: 'image/png' }
         ]
-      });}
+      });
+    
+      navigator.mediaSession.setPositionState({
+        duration: max,
+        position: currentTime
+      });
+    }
   }, [musicaTocando])
+
   if ('mediaSession' in navigator) {
     navigator.mediaSession.setActionHandler('previoustrack', () => {
       previous()
