@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Player-Test.css';
 import Music_Title from '../Music-Title/Music-Title';
 import { useMusic } from '../../Context/MusicContext';
-import { Pause, Play, SkipBack, SkipForward } from '@phosphor-icons/react';
+import { ArrowDown, Pause, Play, SkipBack, SkipForward, X } from '@phosphor-icons/react';
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -11,6 +11,12 @@ const MusicPlayer = () => {
   const seeker = useRef(null);
   const [max, setMax] = useState(0);
   const { musicas, setMusicas, musicaTocando, musicaIndex, tocarMusica } = useMusic();
+
+  const [collapsedHeight, setCollapsedHeight] = useState(0);
+  const [expandedHeight, setExpandedHeight] = useState(0);
+  const collapsedRef = useRef(null);
+  const expandedRef = useRef(null);
+
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -38,6 +44,19 @@ const MusicPlayer = () => {
       }
     };
   }, [musicaTocando, musicaIndex]);
+
+
+  useEffect(() => {
+  const collapsedElement = collapsedRef.current;
+  const expandedElement = expandedRef.current;
+
+  if (collapsedElement) {
+    setCollapsedHeight(collapsedElement.offsetHeight);
+  }
+  if (expandedElement) {
+    setExpandedHeight(expandedElement.offsetHeight);
+  }
+}, []);
 
   const handlePlayPause = () => {
     const audio = audioRef.current;
@@ -92,34 +111,40 @@ const MusicPlayer = () => {
     }
   };
 
+  const [expand, setExpand] = useState(false)
+
+  function handleExpand() {
+    setExpand(!expand)
+  }
+
+  useEffect(() => {
+    console.log(expand)
+
+
+  }, [expand])
+
+
   return (
-    <div className="music-player">
-      <audio
-        src={`https://${musicaTocando.songLink}`}
-        ref={audioRef}
-        autoPlay
-        controls={false}
-      />
-      <div className="player-controls">
-        <Music_Title song={musicaTocando}></Music_Title>
-        <div>
-          <button className='play-pause'>
-            <SkipBack onClick={previous} onDoubleClick={doublePrevious} size={32} color={`#fcafad`} />
-          </button>
-          <button className='play-pause'>
-            <SkipForward onClick={next} size={32} color={`#fcafad`} />
-          </button>
-          <button onClick={handlePlayPause} className='play-pause'>
-            {isPlaying ? (
-              <Pause size={32} color={`#fcafad`} />
-            ) : (
-              <Play size={32} color={`#fcafad`} />
-            )}
-          </button>
-        </div>
-      </div>
-      <div className="progress-bar-container">
+    <div className={`${expand ? " items-center  h-[40rem] max-h-[80dvh] overflow-auto pt-0  music-player  z-100  flex flex-col" : "music-player"}`}>
+      {
+        expand &&
+        <>
+          <div className='flex justify-between pt-4 pb-2 items-center w-full'>
+            <ArrowDown onClick={handleExpand} weight='bold' size={32} color={`#ffffff`} /> 
+            <p className='text-1xl font-bold'>{musicaTocando.albumName}</p>
+           <ArrowDown onClick={handleExpand} weight='bold' size={32} color={`#fcafad`} /> 
+          </div>
+
+          <img src={musicaTocando.albumCover} className='max-w-80 rounded-lg shadow-lg' />
+          <p className='self-start text-3xl font-bold mt-10'>{musicaTocando.name}</p>
+          <p className='self-start text-2xl '>{musicaTocando.artistName}</p>
+
+        </>
+      }
+
+      <div className="progress-bar-container flex flex-row w-full">
         <input
+          className='flex-grow'
           type="range"
           value={currentTime}
           max={max}
@@ -128,6 +153,59 @@ const MusicPlayer = () => {
         />
         <div className="current-time">{formatTime(currentTime)}</div>
       </div>
+
+      {expand &&
+      
+        <div>
+          
+          <button className='play-pause'>
+            <SkipBack onClick={previous} onDoubleClick={doublePrevious} size={32} color={`#fcafad`} />
+          </button>
+
+          <button onClick={handlePlayPause} className='play-pause'>
+            {isPlaying ? (
+              <Pause size={32} color={`#fcafad`} />
+            ) : (
+              <Play size={32} color={`#fcafad`} />
+            )}
+          </button>
+          <button className='play-pause'>
+            <SkipForward onClick={next} size={32} color={`#fcafad`} />
+          </button>
+         
+        </div>
+    
+      }
+      <audio
+        src={`https://${musicaTocando.songLink}`}
+        ref={audioRef}
+        autoPlay
+        controls={false}
+      />
+      <div className="player-controls">
+        {!expand &&
+
+          <button className='flex flex-start flex-grow text-start' onClick={handleExpand}>
+            <Music_Title song={musicaTocando}></Music_Title>
+          </button>
+        }
+
+
+          {!expand  &&
+          <div>
+      
+          <button onClick={handlePlayPause} className='play-pause'>
+            {isPlaying ? (
+              <Pause size={32} color={`#fcafad`} />
+            ) : (
+              <Play size={32} color={`#fcafad`} />
+            )}
+          </button>
+        </div>
+          }
+          
+      </div>
+
     </div>
   );
 };

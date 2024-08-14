@@ -45,18 +45,22 @@ function App() {
   return (
     <>
       <div className='body'>
-        <div className='top'>
+        <div className='top flex flex-col align-center'>
           <Playlist></Playlist>
 
           {songs.map((song, index) => (
             <ListMusic key={index} song={song.song} onContextMenu={window.alert} onClick={() => handleSongClick(index)} onMenu={() => {queue(index)}}  />
           ))}
+
+
         </div>
-        <div className='bottom'>
+
+
+        <div className='bottom flex flex-col items-center'>
         
+                            {musicaTocando && <Player_Test />}
 
 
-          {musicaTocando && <Player_Test />}
           <Menu></Menu>
         </div>
       </div>

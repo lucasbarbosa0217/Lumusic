@@ -10,10 +10,13 @@ padding: 8px 12px 16px 12px;
 gap: 4px;
 background-color: var(--background);
 border-radius: 20px;
+transition: .5s height;
+overflow:hidden;
+height:8.07rem
 }
 
 .progress-bar-container{
-    order: -1;
+  
     display: flex;
     gap: 16px;
     font-family: "DM Sanx", sans-serif;
