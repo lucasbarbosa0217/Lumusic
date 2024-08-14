@@ -1,0 +1,47 @@
+.playlist-header button{
+    background-color: transparent;
+    border: none;
+    border-radius: 100px;
+
+}
+
+.playlist-header{
+   top: 0;
+   left: 0;
+   width: 100vw;
+   padding: 8px;
+    border-bottom: 1px solid var(--main-color);
+   position: fixed;
+
+   background-color: var(--background);
+}
+.playlist-header button img{
+    width: 45px;
+    height: 45px;
+}
+
+.playlist-container{
+    width: calc(100% - 32px);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid var(--main-color);
+}
+
+.title-playlist{
+    margin-top: 68px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title-playlist img{
+    
+    width: 60vw;
+    height: 60vw;
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 16px;
+}

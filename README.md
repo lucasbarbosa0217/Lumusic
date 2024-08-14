@@ -1,9 +1,3 @@
-# Music Player Website - React
-
-## Descrição do Projeto
-
-O site Music Player é uma aplicação web desenvolvida em React que oferece a funcionalidade de reprodução de músicas. Utilizando a biblioteca ReactAudioPlayer, o aplicativo recebe a lista de músicas de um arquivo JSON e as reproduz em um player integrado. As músicas estão hospedadas em um CDN para garantir uma experiência de streaming eficiente.
-
 ## Funcionalidades
 
 - **Reprodução de Músicas:** O site permite a reprodução de músicas presentes na lista fornecida pelo arquivo JSON.
