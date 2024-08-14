@@ -1,8 +1,21 @@
-# React + Vite
+## Funcionalidades
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **Reprodução de Músicas:** O site permite a reprodução de músicas presentes na lista fornecida pelo arquivo JSON.
 
-Currently, two official plugins are available:
+- **Lista de Músicas:** A lista de músicas é carregada dinamicamente a partir do arquivo JSON, exibindo informações como nome da música, artista e duração.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Integração com ReactAudioPlayer:** Utilizando a biblioteca ReactAudioPlayer, o aplicativo oferece um player de áudio responsivo e fácil de usar.
+
+## Tecnologias Utilizadas
+
+- React (Biblioteca JavaScript para construção de interfaces de usuário)
+- ReactAudioPlayer (Biblioteca para reprodução de áudio em React)
+- CDN (Hospedagem das músicas)
+
+## Como Executar Localmente
+
+1. Clone o repositório: `git clone https://github.com/seu-usuario/music-player-react.git`.
+2. Navegue até o diretório do projeto: `cd music-player-react`.
+3. Instale as dependências: `npm install` ou `yarn install`.
+4. Inicie o servidor de desenvolvimento: `npm start` ou `yarn start`.
+5. Acesse o aplicativo no navegador: `http://localhost:3000`.
