@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../../Vars.css";
 import "./Music-Title.css";
-import CoverImg from "../../assets/cover.png";
 
 const Music_Title = ({ song }) => {
 
