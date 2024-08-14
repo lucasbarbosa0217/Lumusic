@@ -17,6 +17,8 @@ const MusicPlayer = () => {
   const collapsedRef = useRef(null);
   const expandedRef = useRef(null);
 
+  const [scroll, setScroll] = useState(false)
+
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -118,14 +120,21 @@ const MusicPlayer = () => {
   }
 
   useEffect(() => {
-    console.log(expand)
+    if(expand){
+      setTimeout(() => {
+        setScroll(true)
+      }, 400);
+    }else{
+      setScroll(false)
+    }
+   
 
 
   }, [expand])
 
 
   return (
-    <div className={`${expand ? " items-center  h-[40rem] max-h-[80dvh] overflow-auto pt-0  music-player  z-100  flex flex-col" : "music-player"}`}>
+    <div className={`${expand ? ` items-center  h-[40rem] max-h-[80dvh] ${scroll ? "overflow-auto" : "overflow-hidden"} scroll pt-0  music-player  z-100  flex flex-col` : "music-player"}`}>
       {
         expand &&
         <>
