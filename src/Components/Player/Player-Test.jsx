@@ -32,10 +32,11 @@ const MusicPlayer = () => {
     
       navigator.mediaSession.setPositionState({
         duration: max,
+        playbackRate: 1,
         position: currentTime
       });
     }
-  }, [musicaTocando])
+  }, [musicaTocando, max, currentTime])
 
   if ('mediaSession' in navigator) {
     navigator.mediaSession.setActionHandler('previoustrack', () => {
