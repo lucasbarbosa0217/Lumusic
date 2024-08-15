@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Player-Test.css';
 import Music_Title from '../Music-Title/Music-Title';
 import { useMusic } from '../../Context/MusicContext';
-import { ArrowDown, Pause, Play, SkipBack, SkipForward, X } from '@phosphor-icons/react';
+import { ArrowDown, Infinity, Pause, Play, Queue, SkipBack, SkipForward, X } from '@phosphor-icons/react';
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -17,7 +17,24 @@ const MusicPlayer = () => {
   const collapsedRef = useRef(null);
   const expandedRef = useRef(null);
 
+  const [isLoop, setLoop] = useState(false)
+
+  const [loopIcon, setLoopIcon] = useState("regular");
+
   const [scroll, setScroll] = useState(false)
+
+  function handleLoop () {
+    setLoop(!isLoop)
+  }
+
+  useEffect(() => {
+    if(isLoop){
+      setLoopIcon("fill")
+    }else{
+      setLoopIcon("regular")
+    }
+  }, [isLoop])
+  
 
   useEffect(() => {
     if ('mediaSession' in navigator) {
@@ -60,7 +77,9 @@ const MusicPlayer = () => {
     };
 
     const handleEnded = () => {
-      next();
+     if(!isLoop){
+       next();
+     }
     };
 
     if (audioElement) {
@@ -152,7 +171,7 @@ const MusicPlayer = () => {
     if(expand){
       setTimeout(() => {
         setScroll(true)
-      }, 400);
+      }, 500);
     }else{
       setScroll(false)
     }
@@ -163,18 +182,18 @@ const MusicPlayer = () => {
 
 
   return (
-    <div className={`${expand ? ` items-center  h-[40rem] max-h-[80dvh] ${scroll ? "overflow-auto" : "overflow-hidden"} scroll pt-0  music-player  z-100  flex flex-col` : "music-player"}`}>
+    <div className={`${expand ? ` items-center  h-[41rem]   lg:h-[44rem] max-h-[80dvh] ${scroll ? "overflow-auto" : "overflow-hidden"} scroll pt-0 px-8 music-player  z-100  flex flex-col` : "music-player"}`}>
       {
         expand &&
         <>
-          <div className='flex justify-between pt-4 pb-2 items-center w-full'>
-            <ArrowDown onClick={handleExpand} weight='bold' size={32} color={`#ffffff`} /> 
+          <div className='flex flex-col justify-between pt-4 pb-2 items-center w-full'>
+            <button onClick={handleExpand} className='h-1 bg-pink-300 w-32 rounded-3xl mb-4 lg:h-4 lg:w-48 lg:mb-8' /> 
+
             <p className='text-1xl font-bold'>{musicaTocando.albumName}</p>
-           <ArrowDown onClick={handleExpand} weight='bold' size={32} color={`#fcafad`} /> 
           </div>
 
           <img src={musicaTocando.albumCover} className='max-w-80 rounded-lg shadow-lg' />
-          <p className='self-start text-3xl font-bold mt-10'>{musicaTocando.name}</p>
+          <p className='self-start text-3xl font-bold mt-4'>{musicaTocando.name}</p>
           <p className='self-start text-2xl '>{musicaTocando.artistName}</p>
 
         </>
@@ -194,21 +213,29 @@ const MusicPlayer = () => {
 
       {expand &&
       
-        <div>
+        <div className='flex flex-row gap-2 mt-8 justify-between w-full'>
           
           <button className='play-pause'>
-            <SkipBack onClick={previous} onDoubleClick={doublePrevious} size={32} color={`#fcafad`} />
+            <Infinity onClick={handleLoop} weight={loopIcon} size={40} color={`#fcafad`} />
+          </button>
+
+          <button className='play-pause'>
+            <SkipBack onClick={previous} onDoubleClick={doublePrevious} size={40} color={`#fcafad`} />
           </button>
 
           <button onClick={handlePlayPause} className='play-pause'>
             {isPlaying ? (
-              <Pause size={32} color={`#fcafad`} />
+              <Pause size={40} color={`#fcafad`} />
             ) : (
-              <Play size={32} color={`#fcafad`} />
+              <Play size={40} color={`#fcafad`} />
             )}
           </button>
           <button className='play-pause'>
-            <SkipForward onClick={next} size={32} color={`#fcafad`} />
+            <SkipForward onClick={next} size={40} color={`#fcafad`} />
+          </button>
+
+          <button className='play-pause'>
+            <Queue weight="regular" size={40} color={`#fcafad`} />
           </button>
          
         </div>
@@ -219,6 +246,7 @@ const MusicPlayer = () => {
         ref={audioRef}
         autoPlay
         controls={false}
+        loop={isLoop}
       />
       <div className="player-controls">
         {!expand &&
@@ -234,9 +262,9 @@ const MusicPlayer = () => {
       
           <button onClick={handlePlayPause} className='play-pause'>
             {isPlaying ? (
-              <Pause size={32} color={`#fcafad`} />
+              <Pause size={40} color={`#fcafad`} />
             ) : (
-              <Play size={32} color={`#fcafad`} />
+              <Play size={40} color={`#fcafad`} />
             )}
           </button>
         </div>

@@ -24,7 +24,7 @@ const ListMusic = ({ song, onClick, onMenu }) => {
   }
   return (
       <div className="music-select">
-      <button className='music-container' onClick={onClick}>
+      <button className='music-container flex-grow overflow-hidden' onClick={onClick}>
         <Music_Title song={song}></Music_Title>
         {musicaTocando === song && <Audio height={40} width={40} color="#fcafad" ></Audio>}
       </button>
