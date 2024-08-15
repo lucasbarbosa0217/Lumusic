@@ -2,6 +2,105 @@
   "songs": [
     {
       "song": {
+        "name": "Virtual Angel",
+        "artistName": "Artms",
+        "albumName": "<DALL>",
+        "albumCover": "https://musicainstantanea.com.br/wp-content/uploads/2024/06/Artms-%E2%80%93-Dall.jpeg",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FARTMS%20-%20Virtual%20Angel.mp3?alt=media&token=bb7ba2b3-6e70-4d75-906a-c9d0cd7fed1b"
+      }
+    },
+    {
+      "song": {
+        "name": "Impossible",
+        "artistName": "RIIZE",
+        "albumName": "RIIZING",
+        "albumCover": "https://i.scdn.co/image/ab67616d00001e0269ad639dd6829cb2414a53f9",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FRIIZE%20-%20Impossible.mp3?alt=media&token=71f77c55-b67d-4c92-862a-e2eb885fa6d3"
+      }
+    },
+    {
+      "song": {
+        "name": "Cosmic",
+        "artistName": "Red Velvet",
+        "albumName": "Cosmic",
+        "albumCover": "https://cdns-images.dzcdn.net/images/cover/836148433fdc9f4e3483bfa970f4d3bb/1900x1900-000000-80-0-0.jpg",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FRed%20Velvet%20-%20Cosmic.mp3?alt=media&token=c6ad4176-3cf9-4ab2-aa01-4dc89259e1e2"
+      }
+    },
+    {
+      "song": {
+        "name": "Good to Me",
+        "artistName": "Seventeen",
+        "albumName": "You Made My Dawn",
+        "albumCover": "https://cdns-images.dzcdn.net/images/cover/8e4b0bf2c1070a30029dad0a6c4277ad/500x500.jpg",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FSEVENTEEN%20-%20Good%20to%20Me.mp3?alt=media&token=0d5eee8f-b5e9-4329-a29b-9d61337a345b"
+      }
+    },
+    {
+      "song": {
+        "name": "Please Please Please",
+        "artistName": "Sabrina Carpenter",
+        "albumName": "Short n' Sweet",
+        "albumCover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a1/1c/ca/a11ccab6-7d4c-e041-d028-998bcebeb709/24UMGIM61704.rgb.jpg/1200x1200bb.jpg",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FSabrina%20Carpenter%20-%20Please%20Please%20Please.mp3?alt=media&token=beea55f1-33c5-4332-9ef2-d6d693d572ed"
+      }
+    },
+    {
+      "song": {
+        "name": "Girls of The Year",
+        "artistName": "Vcha",
+        "albumName": "Girls of The Year",
+        "albumCover": "https://i.scdn.co/image/ab67616d0000b2736ffd95362da56125cd03a7f9",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FVCHA%20-%20Girls%20of%20the%20Year.mp3?alt=media&token=84016c7f-aa04-4af2-adc2-0d9de711e502"
+      }
+    },
+    {
+      "song": {
+        "name": "New Dance",
+        "artistName": "XG",
+        "albumName": "NEW DNA",
+        "albumCover": "https://i.scdn.co/image/ab67616d0000b273e9b58064013b722f09296b3e",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FXG%20-%20NEW%20DANCE.mp3?alt=media&token=87b7070f-5269-4f0c-8c26-9e078ac15db0"
+      }
+    },
+    {
+      "song": {
+        "name": "Girls Never Die",
+        "artistName": "TripleS",
+        "albumName": "ASSEMBLE24",
+        "albumCover": "https://upload.wikimedia.org/wikipedia/en/1/19/Assemble24.jpg",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FtripleS%20-%20Girls%20Never%20Die.mp3?alt=media&token=309582c0-bfd6-40e0-93c3-6826608cf5bb"
+      }
+    },
+        {
+          "song": {
+            "name": "Touch",
+            "artistName": "Katseye",
+            "albumName": "Touch",
+            "albumCover": "https://i.scdn.co/image/ab67616d0000b2737e76c17cfbc723800452a24f",
+            "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FKATSEYE%20-%20Touch.mp3?alt=media&token=8a668da1-76b4-49d4-9487-a78d7e31e9e9"
+          }
+        },
+    {
+      "song": {
+        "name": "Julho",
+        "artistName": "Jão",
+        "albumName": "Super",
+        "albumCover": "https://upload.wikimedia.org/wikipedia/pt/7/75/J%C3%A3o_-_Super.png",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FJ%C3%A3o%20-%20Julho.mp3?alt=media&token=6c485226-40b2-4f85-985e-a433271d0f63"
+      }
+    },
+    {
+      "song": {
+        "name": "My Kink is Karma",
+        "artistName": "Chappell Roan",
+        "albumName": "The Rise and Fall of a Midwest Princess",
+        "albumCover": "https://media.pitchfork.com/photos/64ff1676931354660ba71d8b/master/w_1280%2Cc_limit/Chappell-Roan-Princess.jpg",
+        "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FChappell%20Roan%20-%20My%20Kink%20Is%20Karma.mp3?alt=media&token=605a4d4f-78d1-4e43-9d92-fde3ef83f703"
+      }
+    },
+    {
+      "song": {
         "name": "Invincible",
         "artistName": "TripleS",
         "albumName": "EVOLution <?>",
