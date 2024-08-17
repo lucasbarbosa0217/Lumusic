@@ -22,15 +22,17 @@ const ListMusic = ({ song, onClick, onMenu }) => {
   function unhover() {
     setWeightIcon("regular");
   }
+
+  const {cor} = useMusic()
   return (
       <div className="music-select">
       <button className='music-container flex-grow overflow-hidden' onClick={onClick}>
         <Music_Title song={song}></Music_Title>
-        {musicaTocando === song && <Audio height={40} width={40} color="#fcafad" ></Audio>}
+        {musicaTocando === song && <Audio height={40} width={40} color={cor} ></Audio>}
       </button>
 
         <button className="play-button queue">
-          <Queue ref={queue} width={40} height={40} color="#fcafad" weight={weightIcon} onClick={onMenu} onMouseOver={hover} onMouseLeave={unhover}></Queue>
+          <Queue ref={queue} width={40} height={40} color={cor} weight={weightIcon} onClick={onMenu} onMouseOver={hover} onMouseLeave={unhover}></Queue>
         </button>
       </div>
 

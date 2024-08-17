@@ -1,14 +1,17 @@
 import React from "react";
 import "../../Vars.css"
 import "./Playlist.css"
+import { ArrowLeft } from "@phosphor-icons/react";
+import { useMusic } from "../../Context/MusicContext";
 
 const Playlist = () => {
+    const {cor} = useMusic()
     return (
         <>
         <div className="playlist-container flex-grow w-full">
             <div className="playlist-header">
                 <button>
-                    <img width="50" height="50" src="https://img.icons8.com/ios/50/fcafad/circled-left-2.png" alt="circled-left-2"/>
+                        <ArrowLeft size={42} color={cor}/>
                 </button>
             </div>
             <div className="title-playlist">

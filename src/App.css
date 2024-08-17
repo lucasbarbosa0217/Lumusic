@@ -6,7 +6,7 @@
   flex-direction: column;
   gap: 40px;
   background: rgb(252,175,173);
-background: linear-gradient(180deg, rgba(252,175,173,0) 0%, rgba(252,175,173,1) 100%);
+background: linear-gradient(180deg, var(--main-color-0-rgba) 0%, var(--main-color-1-rgba) 100%);
 }
 
 .body{
