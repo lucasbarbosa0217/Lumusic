@@ -176,16 +176,26 @@ const MusicPlayer = () => {
 
   const handlers = useSwipeable({
     onSwipedDown: () => {
-      console.log("Swiped Down");
-      if (expand && window.innerHeight > window.innerWidth) {
+      if (expand && window.innerHeight > window.innerWidth && window.innerHeight > 739) {
         handleExpand();
       }
     },
   });
 
+  const [touchEvents, setTouchEvents] = useState(false)
+
+  useEffect(() => {
+    if(window.innerHeight < 740){
+      setTouchEvents(true)
+    }else{
+      setTouchEvents(false)
+    }
+  }, [window.innerHeight])
+  
+
   return (
     <div
-      className={`music-player transition-all duration-300 max-h-[70vh] overflow-hidden ${scroll && "overflow-auto"}`}
+      className={`music-player transition-all duration-300 max-h-[80vh] overflow-hidden ${scroll && "overflow-auto"}`}
       ref={mainRef}
     >
       <div className={`${!expand ? `h-fit p-4` : "h-0 overflow-hidden"}`} ref={collapsedRef}>
@@ -220,7 +230,7 @@ const MusicPlayer = () => {
       </div>
 
       <div className={`pt-0 items-center flex flex-col  ${scroll && `overflow-auto`}`} ref={expandedRef}>
-        <div {...handlers} className='flex flex-col items-center w-full h-fit p-8 pt-0 '>
+        <div {...handlers} className={`flex flex-col items-center w-full h-fit p-8 pt-0 ${touchEvents ? "touch-auto" : "touch-none"}`}>
           <div className="flex flex-col justify-between  pb-2 items-center w-full">
             <button
               onClick={handleExpand}
