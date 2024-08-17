@@ -5,7 +5,7 @@
         "name": "Virtual Angel",
         "artistName": "Artms",
         "albumName": "<DALL>",
-        "albumCover": "https://musicainstantanea.com.br/wp-content/uploads/2024/06/Artms-%E2%80%93-Dall.jpeg",
+        "albumCover": "https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Artms_-_Dall.png/220px-Artms_-_Dall.png",
         "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FARTMS%20-%20Virtual%20Angel.mp3?alt=media&token=bb7ba2b3-6e70-4d75-906a-c9d0cd7fed1b"
       }
     },
@@ -95,7 +95,7 @@
         "name": "My Kink is Karma",
         "artistName": "Chappell Roan",
         "albumName": "The Rise and Fall of a Midwest Princess",
-        "albumCover": "https://media.pitchfork.com/photos/64ff1676931354660ba71d8b/master/w_1280%2Cc_limit/Chappell-Roan-Princess.jpg",
+        "albumCover": "https://upload.wikimedia.org/wikipedia/en/3/34/Chappell_Roan_-_The_Rise_and_Fall_of_a_Midwest_Princess.png",
         "songLink": "firebasestorage.googleapis.com/v0/b/lusmic-ef813.appspot.com/o/songs%2FChappell%20Roan%20-%20My%20Kink%20Is%20Karma.mp3?alt=media&token=605a4d4f-78d1-4e43-9d92-fde3ef83f703"
       }
     },

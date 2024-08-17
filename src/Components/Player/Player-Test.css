@@ -6,13 +6,13 @@ box-shadow: 0px 1px 20px -9px rgba(0,0,0,0.61);
 -webkit-box-shadow: 0px 1px 20px -9px rgba(0,0,0,0.61);
 -moz-box-shadow: 0px 1px 20px -9px rgba(0,0,0,0.61);
 margin: 0px 8px;
-padding: 8px 12px 16px 12px;
 gap: 4px;
 background-color: var(--background);
 border-radius: 20px;
 transition: .5s height;
 overflow:hidden;
-height:8.07rem
+height:8.07rem;
+touch-action: none
 }
 
 .progress-bar-container{
@@ -41,7 +41,7 @@ input[type="range"] {
   /******** Chrome, Safari, Opera and Edge Chromium styles ********/
   /* slider track */
   input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #fcafad;
+    background-color: var(--main-color);
     border-radius: 4.5rem;
     height: 0.5rem;
   }
@@ -66,7 +66,7 @@ input[type="range"] {
   /*********** Firefox styles ***********/
   /* slider track */
   input[type="range"]::-moz-range-track {
-    background-color: #fcafad;
+    background-color: var(--main-color);
     border-radius: 4.5rem;
     height: 0.5rem;
   }
@@ -114,8 +114,11 @@ input[type="range"] {
     background-color: var(--background-hover);
   }
 
+  .collapser{
+    background-color: var(--main-color)
+  }
   
-
+ 
 
   .player-controls{
     display: flex;

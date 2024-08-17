@@ -4,6 +4,9 @@
     --background: #fff;
     --border-radius: 16px; 
     --main-color: #fcafad;
+    --main-color-0-rgba: rgba(252,175,173, 0);
+    --main-color-1-rgba: rgba(252,175,173, 1);
+
    
 }
 

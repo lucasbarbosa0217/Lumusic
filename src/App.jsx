@@ -9,7 +9,7 @@ import songList from "./artist.json"
 function App() {
   const [songs, setSongs] = useState(songList.songs);
   const [playerKey, setPlayerKey] = useState(0);
-  const { musicas, setMusicas, musicaTocando, musicaIndex, tocarMusica, pararMusica, setCurrentIndex, } = useMusic();
+  const { musicas, setMusicas, musicaTocando, musicaIndex, tocarMusica, pararMusica, setCurrentIndex, expand} = useMusic();
   const [musicasClicada , setMusicaClicada] = useState(null)
 
 
@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <div className='body'>
-        <div className='top flex flex-col align-center'>
+        <div className={`top flex flex-col align-center  ${expand && ""}`}>
           <Playlist></Playlist>
 
           {songs.map((song, index) => (

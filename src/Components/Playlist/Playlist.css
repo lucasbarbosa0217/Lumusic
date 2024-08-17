@@ -1,26 +1,24 @@
-.playlist-header button{
-    background-color: transparent;
+.playlist-header button {
     border: none;
     border-radius: 100px;
-
 }
 
-.playlist-header{
-   top: 0;
-   left: 0;
-   width: 100vw;
-   padding: 8px;
+.playlist-header {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 8px;
     border-bottom: 1px solid var(--main-color);
-   position: fixed;
-
-   background-color: var(--background);
+    position: fixed;
+    background-color: var(--background);
 }
-.playlist-header button img{
+
+.playlist-header button img {
     width: 45px;
     height: 45px;
 }
 
-.playlist-container{
+.playlist-container {
     width: calc(100% - 32px);
     padding: 16px;
     display: flex;
@@ -28,20 +26,36 @@
     border-bottom: 3px solid var(--main-color);
 }
 
-.title-playlist{
+.title-playlist {
     margin-top: 68px;
-    
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.title-playlist img{
-    
+.image-container {
+    position: relative;
     width: 60vw;
     height: 60vw;
     max-width: 250px;
     max-height: 250px;
+    z-index:-1
+}
+
+.title-playlist img {
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-color); /* Cor desejada (vermelho com 50% de opacidade) */
+    mix-blend-mode: color;
+    pointer-events: none; /* Para garantir que a sobreposição não interfira na interação com a imagem */
 }
