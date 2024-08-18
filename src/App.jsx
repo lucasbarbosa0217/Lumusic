@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <div className='body'>
-        <div className={`top flex flex-col align-center  ${expand && ""}`}>
+        <div className={`top flex flex-col align-center `}>
           <Playlist></Playlist>
 
           {songs.map((song, index) => (

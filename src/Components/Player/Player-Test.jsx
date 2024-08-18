@@ -142,8 +142,12 @@ const MusicPlayer = () => {
     }
     if (musicaIndex === 0) {
       tocarMusica(musicas.length - 1);
+      setIsPlaying(true);
+
     } else {
       tocarMusica(musicaIndex - 1);
+      setIsPlaying(true);
+
     }
   };
 
@@ -152,8 +156,12 @@ const MusicPlayer = () => {
   const doublePrevious = () => {
     if (musicaIndex === 0) {
       tocarMusica(musicas.length - 1);
+      setIsPlaying(true);
+
     } else {
       tocarMusica(musicaIndex - 1);
+      setIsPlaying(true);
+
     }
   };
 
@@ -162,8 +170,12 @@ const MusicPlayer = () => {
   const next = () => {
     if (musicas.length - 1 === musicaIndex) {
       tocarMusica(0);
+      setIsPlaying(true);
+
     } else {
       tocarMusica(musicaIndex + 1);
+      setIsPlaying(true);
+
     }
   };
 
@@ -267,7 +279,7 @@ const MusicPlayer = () => {
               transition={{ duration: 0.3 }}
               className={`items-center max-h-[82dvh] w-full playercontainer ${scroll && "overflow-auto"}`} 
               ref={expandedRef}>
-              <div {...handlers} className={`flex flex-col items-center  h-fit px-8 pb-16 pt-0 m-4 mb-0 rounded-t-3xl shadow-2xl bg-stone-50 ${touchEvents ? "touch-auto" : "touch-none"}`}>
+              <div {...handlers} className={`flex flex-col items-center  h-fit px-8 pb-16 pt-0 m-4 mb-0 rounded-t-3xl shadow--2xl bg-stone-50 ${touchEvents ? "touch-auto" : "touch-none"}`}>
                 <div className="flex flex-col justify-between  pb-2 items-center w-full">
                   <button
                     onClick={handleExpand}
