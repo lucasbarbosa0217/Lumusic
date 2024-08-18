@@ -4,9 +4,6 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 25px;
-  background: rgb(252,175,173);
-background: linear-gradient(180deg, var(--main-color-0-rgba) 0%, var(--main-color-1-rgba) 100%);
 }
 
 

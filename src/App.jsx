@@ -61,7 +61,7 @@ function App() {
                             {musicaTocando && <Player_Test />}
 
 
-          <Menu></Menu>
+      
         </div>
       </div>
     </>

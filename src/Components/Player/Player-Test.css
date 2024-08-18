@@ -1,19 +1,8 @@
-.music-player{
-    width: calc(100% - 40px);
-    display: flex;
-flex-direction: column;
-box-shadow: 0px 1px 20px -9px rgba(0,0,0,0.61);
--webkit-box-shadow: 0px 1px 20px -9px rgba(0,0,0,0.61);
--moz-box-shadow: 0px 1px 20px -9px rgba(0,0,0,0.61);
-margin: 0px 8px;
-gap: 4px;
-background-color: var(--background);
-border-radius: 20px;
-transition: .5s height;
-overflow:hidden;
-height:8.07rem;
-touch-action: none
+.playercontainer{
+background: linear-gradient(180deg, var(--main-color-0-rgba) 0%, var(--main-color-1-rgba) 60%);
+
 }
+
 
 .progress-bar-container{
   
