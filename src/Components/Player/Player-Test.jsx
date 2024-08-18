@@ -13,23 +13,12 @@ const MusicPlayer = () => {
   const [max, setMax] = useState(0);
   const { musicas, setMusicas, musicaTocando, musicaIndex, tocarMusica, cor, expand, setExpand } = useMusic();
 
-
   const collapsedRef = useRef(null);
   const expandedRef = useRef(null);
   const mainRef = useRef(null);
-
-
   const [isLoop, setLoop] = useState(false);
-  const [loopIcon, setLoopIcon] = useState("regular");
   const [scroll, setScroll] = useState(false);
 
-  useEffect(() => {
-    if (isLoop) {
-      setLoopIcon("fill");
-    } else {
-      setLoopIcon("regular");
-    }
-  }, [isLoop]);
 
   useEffect(() => {
     if ('mediaSession' in navigator) {
@@ -50,6 +39,8 @@ const MusicPlayer = () => {
     }
   }, [musicaTocando, max, currentTime]);
 
+
+
   if ('mediaSession' in navigator) {
     navigator.mediaSession.setActionHandler('previoustrack', () => {
       previous();
@@ -58,7 +49,15 @@ const MusicPlayer = () => {
     navigator.mediaSession.setActionHandler('nexttrack', () => {
       next();
     });
+    navigator.mediaSession.setActionHandler('play', () => {
+      handlePlayPause()
+    });
+    navigator.mediaSession.setActionHandler('pause', () => {
+      handlePlayPause()
+    });
   }
+
+
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -79,6 +78,7 @@ const MusicPlayer = () => {
     if (audioElement) {
       audioElement.addEventListener('timeupdate', handleTimeUpdate);
       audioElement.addEventListener('ended', handleEnded);
+
     }
 
     return () => {
@@ -88,6 +88,8 @@ const MusicPlayer = () => {
       }
     };
   }, [musicaTocando, musicaIndex]);
+
+
 
   useEffect(() => {
     const collapsedElement = collapsedRef.current;
@@ -103,25 +105,36 @@ const MusicPlayer = () => {
     }
   }, [expand]);
 
+
+
   const handlePlayPause = () => {
     const audio = audioRef.current;
     if (isPlaying) {
       audio.pause();
+      setIsPlaying(false);
+
     } else {
       audio.play();
+      setIsPlaying(true);
+
     }
-    setIsPlaying(!isPlaying);
   };
+
+
 
   const handleLoop = () => {
     setLoop(!isLoop);
   };
+
+
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   };
+
+
 
   const handleSeek = (e) => {
     const seekTime = e.target.value;
@@ -131,6 +144,8 @@ const MusicPlayer = () => {
       setCurrentTime(seekTime);
     }
   };
+
+
 
   const previous = () => {
     if (currentTime > 5) {
@@ -144,6 +159,8 @@ const MusicPlayer = () => {
     }
   };
 
+
+
   const doublePrevious = () => {
     if (musicaIndex === 0) {
       tocarMusica(musicas.length - 1);
@@ -151,6 +168,8 @@ const MusicPlayer = () => {
       tocarMusica(musicaIndex - 1);
     }
   };
+
+
 
   const next = () => {
     if (musicas.length - 1 === musicaIndex) {
@@ -160,9 +179,13 @@ const MusicPlayer = () => {
     }
   };
 
+
+
   const handleExpand = () => {
     setExpand(!expand);
   };
+
+
 
   useEffect(() => {
     if (expand) {
@@ -174,6 +197,8 @@ const MusicPlayer = () => {
     }
   }, [expand]);
 
+
+
   const handlers = useSwipeable({
     onSwipedDown: () => {
       if (expand && window.innerHeight > window.innerWidth && window.innerHeight > 739) {
@@ -181,6 +206,7 @@ const MusicPlayer = () => {
       }
     },
   });
+
 
   const [touchEvents, setTouchEvents] = useState(false)
 
@@ -198,7 +224,7 @@ const MusicPlayer = () => {
       className={`music-player transition-all duration-300 max-h-[80vh] overflow-hidden ${scroll && "overflow-auto"}`}
       ref={mainRef}
     >
-      <div className={`${!expand ? `h-fit p-4` : "h-0 overflow-hidden"}`} ref={collapsedRef}>
+      <div className={`${!expand ? `h-fit p-2` : "h-0 overflow-hidden"}`} ref={collapsedRef}>
         <div className="progress-bar-container flex flex-row w-full">
           <input
             className="flex-grow"
@@ -210,14 +236,14 @@ const MusicPlayer = () => {
           />
           <div className="current-time">{formatTime(currentTime)}</div>
         </div>
-        <div className="player-controls">
+        <div className="player-controls flex w-full overflow-hidden">
           <button
-            className="flex flex-start flex-grow text-start"
+            className="flex flex-start flex-grow text-start overflow-hidden"
             onClick={handleExpand}
           >
             <Music_Title song={musicaTocando} />
           </button>
-          <div>
+          <div className='flex-shrink-0 flex items-center justify-center'>
             <button onClick={handlePlayPause} className="play-pause">
               {isPlaying ? (
                 <Pause size={40} color={cor} />
@@ -230,7 +256,7 @@ const MusicPlayer = () => {
       </div>
 
       <div className={`pt-0 items-center flex flex-col  ${scroll && `overflow-auto`}`} ref={expandedRef}>
-        <div {...handlers} className={`flex flex-col items-center w-full h-fit p-8 pt-0 ${touchEvents ? "touch-auto" : "touch-none"}`}>
+        <div {...handlers} className={`flex flex-col items-center w-full h-fit px-8 pb-2 pt-0 ${touchEvents ? "touch-auto" : "touch-none"}`}>
           <div className="flex flex-col justify-between  pb-2 items-center w-full">
             <button
               onClick={handleExpand}
@@ -238,14 +264,14 @@ const MusicPlayer = () => {
             >
               <div className={`collapser w-24 h-1`}></div>
             </button>
-            <p className="text-1xl font-bold">{musicaTocando.albumName}</p>
+            <p className="text-1xl font-bold whitespace-nowrap overflow-hidden w-full text-center">{musicaTocando.albumName}</p>
           </div>
 
           <img 
             src={musicaTocando.albumCover}
             className="max-w-80 rounded-lg shadow-lg w-full "
           />
-          <p className="self-start text-3xl font-bold mt-4">
+          <p className="self-start text-3xl font-bold mt-4 whitespace-nowrap overflow-hidden w-full" >
             {musicaTocando.name}
           </p>
           <p className="self-start text-2xl">{musicaTocando.artistName}</p>
@@ -263,7 +289,7 @@ const MusicPlayer = () => {
 
           <div className="flex flex-row gap-2 mt-8 justify-between w-full lg:mt-2">
             <button className="play-pause">
-              <Infinity onClick={handleLoop} weight={loopIcon} size={40} color={cor} />
+              <Infinity onClick={handleLoop} weight={isLoop? "fill" : "regular"} size={40} color={cor} />
             </button>
             <button className="play-pause">
               <SkipBack
