@@ -9,9 +9,8 @@
 
 .top{
   box-sizing: border-box;
-  height: 100vh;
   overflow: auto;
-  padding-bottom: 230px;
+  padding-bottom: 14rem;
 }
 
 html{
