@@ -13,6 +13,7 @@
     "@phosphor-icons/react": "^2.1.7",
     "chroma-js": "^3.0.0",
     "fast-average-color": "^9.4.0",
+    "framer-motion": "^11.3.28",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-loader-spinner": "^6.1.6",
